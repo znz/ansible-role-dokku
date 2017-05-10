@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Kazuhiro NISHIYAMA
+  description: Setup Dokku
+  license: MIT
+  min_ansible_version: 1.6
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+  - name: Debian
+    versions:
+    - jessie
+    #- stretch
+
+  galaxy_tags:
+  - networking
+  - packaging
+  - system
+
+dependencies: []

@@ -1,0 +1,61 @@
+---
+# tasks file for ansible-role-dokku
+- name: "Install apt-transport-https,ca-certificates,curl"
+  apt: name=apt-transport-https,ca-certificates,curl
+- name: "Install software-properties-common"
+  apt: name=software-properties-common
+  when: ( ansible_lsb.codename == "jessie" or ansible_lsb.codename == "stretch" )
+
+- name: "Install docker-ce"
+  include: "docker-ce.yml"
+  when: dokku_docker_ce_channel is defined and dokku_docker_ce_channel is not none
+
+- name: "Install docker-engine"
+  include: "docker-engine.yml"
+  when: dokku_docker_ce_channel is not defined or dokku_docker_ce_channel is none
+
+# Install dokku
+- name: "Add packagecloud apt key"
+  apt_key:
+    url: "https://packagecloud.io/gpg.key"
+    id: "C2E73424D59097AB"
+- name: "Add apt repository of dokku"
+  apt_repository:
+    repo: "deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main"
+    # Use trusty for all Debian/Ubuntu (see bootstrap.sh of Dokku)
+
+- name: "debconf dokku/vhost_enable"
+  debconf:
+    name: dokku
+    question: dokku/vhost_enable
+    value: "{{ dokku_vhost_enable }}"
+    vtype: boolean
+- name: "debconf dokku/web_config"
+  debconf:
+    name: dokku
+    question: dokku/web_config
+    value: "{{ dokku_web_config }}"
+    vtype: boolean
+- name: "debconf dokku/hostname"
+  debconf:
+    name: dokku
+    question: dokku/hostname
+    value: "{{ dokku_hostname }}"
+    vtype: string
+- name: "debconf dokku/skip_key_file"
+  debconf:
+    name: dokku
+    question: dokku/skip_key_file
+    value: "{{ dokku_skip_key_file }}"
+    vtype: boolean
+- name: "debconf dokku/key_file"
+  debconf:
+    name: dokku
+    question: dokku/key_file
+    value: "{{ dokku_key_file }}"
+    vtype: string
+
+- name: "Install dokku"
+  apt:
+    name: dokku
+    install_recommends: yes
