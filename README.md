@@ -33,6 +33,16 @@ Example:
       roles:
          - znz.dokku
 
+Another example:
+    - hosts: all
+      become: yes
+      roles:
+      - role: znz.dokku
+        dokku_vhost_enable: "true"
+        dokku_web_config: "false"
+        dokku_hostname: "127.0.0.1.xip.io"
+        dokku_skip_key_file: "true"
+
 ## License
 
 MIT License
