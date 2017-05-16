@@ -5,7 +5,3 @@ dokku_web_config: "true"
 dokku_hostname: "dokku.me"
 dokku_skip_key_file: "false"
 dokku_key_file: "/root/.ssh/id_rsa.pub"
-
-#dokku_docker_ce_channel: ~
-#dokku_docker_ce_channel: "stable"
-#dokku_docker_ce_channel: "edge"

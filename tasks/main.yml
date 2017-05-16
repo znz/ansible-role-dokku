@@ -6,14 +6,6 @@
   apt: name=software-properties-common
   when: ( ansible_lsb.codename == "jessie" or ansible_lsb.codename == "stretch" )
 
-- name: "Install docker-ce"
-  include: "docker-ce.yml"
-  when: dokku_docker_ce_channel is defined and dokku_docker_ce_channel is not none
-
-- name: "Install docker-engine"
-  include: "docker-engine.yml"
-  when: dokku_docker_ce_channel is not defined or dokku_docker_ce_channel is none
-
 # Install dokku
 - name: "Add packagecloud apt key"
   apt_key:
