@@ -51,3 +51,9 @@
   apt:
     name: dokku
     install_recommends: yes
+
+- name: "Install plugin"
+  command: >-
+    creates=/var/lib/dokku/plugins/available/{{ item.name }}
+    dokku plugin:install {{ item.url }}
+  with_items: "{{ dokku_plugin }}"

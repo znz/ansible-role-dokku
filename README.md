@@ -18,6 +18,8 @@ Setup [Dokku](http://dokku.viewdocs.io/dokku/).
 Note: boolean value should be `"true"` or `"false"` in string of yaml.
 If use `true` (`yes`), `false` (`no`) or something similar, ansible reports `changed` every provision.
 
+- `dokku_plugin`: Install plugin.
+
 ## Dependencies
 
 - docker
@@ -44,6 +46,13 @@ Another example:
         dokku_web_config: "false"
         dokku_hostname: "127.0.0.1.xip.io"
         dokku_skip_key_file: "true"
+        dokku_plugin:
+        - name: letsencrypt
+          url: https://github.com/dokku/dokku-letsencrypt.git
+        - name: maintenance
+          url: https://github.com/dokku/dokku-maintenance.git
+        - name: postgres
+          url: https://github.com/dokku/dokku-postgres.git
 
 ## License
 

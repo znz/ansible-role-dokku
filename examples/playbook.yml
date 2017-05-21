@@ -17,3 +17,10 @@
     dokku_web_config: "false"
     dokku_hostname: "127.0.0.1.xip.io"
     dokku_skip_key_file: "true"
+    dokku_plugin:
+    - name: letsencrypt
+      url: https://github.com/dokku/dokku-letsencrypt.git
+    - name: maintenance
+      url: https://github.com/dokku/dokku-maintenance.git
+    - name: postgres
+      url: https://github.com/dokku/dokku-postgres.git

@@ -5,3 +5,5 @@ dokku_web_config: "true"
 dokku_hostname: "dokku.me"
 dokku_skip_key_file: "false"
 dokku_key_file: "/root/.ssh/id_rsa.pub"
+
+dokku_plugin: []
