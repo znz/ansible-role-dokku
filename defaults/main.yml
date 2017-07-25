@@ -7,3 +7,5 @@ dokku_skip_key_file: "false"
 dokku_key_file: "/root/.ssh/id_rsa.pub"
 
 dokku_plugin: []
+
+dokku_nginx_client_max_body_size: "20M"

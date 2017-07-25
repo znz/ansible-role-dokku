@@ -57,3 +57,11 @@
     creates=/var/lib/dokku/plugins/available/{{ item.name }}
     dokku plugin:install {{ item.url }}
   with_items: "{{ dokku_plugin }}"
+
+- name: "Create /etc/nginx/conf.d/client_max_body_size.conf"
+  template:
+    src: client_max_body_size.conf.j2
+    dest: /etc/nginx/conf.d/client_max_body_size.conf
+    owner: root
+    group: root
+    mode: 0444
