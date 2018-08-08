@@ -49,7 +49,7 @@
 
 - name: "Install dokku"
   apt:
-    name: dokku
+    name: "dokku={{ dokku_version }}"
     install_recommends: yes
 
 - name: "Install plugin"
