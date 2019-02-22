@@ -9,8 +9,9 @@
 # Install dokku
 - name: "Add packagecloud apt key"
   apt_key:
-    url: "https://packagecloud.io/gpg.key"
-    id: "C2E73424D59097AB"
+    url: "https://packagecloud.io/dokku/dokku/gpgkey"
+    id: "FB2B6AA421CD193F"
+
 - name: "Add apt repository of dokku"
   apt_repository:
     repo: "deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main"
@@ -51,6 +52,7 @@
   apt:
     name: dokku
     install_recommends: yes
+    update_cache: yes
 
 - name: "Install plugin"
   command: >-
