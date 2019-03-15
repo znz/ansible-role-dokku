@@ -14,7 +14,7 @@ Setup [Dokku](http://dokku.viewdocs.io/dokku/).
 - `dokku_hostname`: Hostname or IP for server. Value of debconf `dokku/hostname`. (string)
 - `dokku_skip_key_file`: Skip key file requirement. Value of debconf `dokku/skip_key_file`. (boolean)
 - `dokku_key_file`: SSH public key file for initial user. Value of debconf `dokku/key_file`. (string)
-- `dokku_version`: version of dokku to be installed. Default: `0.11.3`. (string)
+- `dokku_version`: version of dokku to be installed. Default: `''`. (string)
 
 Note: boolean value should be `"true"` or `"false"` in string of yaml.
 If use `true` (`yes`), `false` (`no`) or something similar, ansible reports `changed` every provision.
@@ -47,6 +47,7 @@ Another example:
         dokku_web_config: "false"
         dokku_hostname: "127.0.0.1.xip.io"
         dokku_skip_key_file: "true"
+        dokku_version: "=0.11.3"
         dokku_plugin:
         - name: letsencrypt
           url: https://github.com/dokku/dokku-letsencrypt.git
