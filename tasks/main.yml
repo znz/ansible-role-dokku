@@ -15,7 +15,13 @@
 - name: "Add apt repository of dokku"
   apt_repository:
     repo: "deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main"
-    # Use trusty for all Debian/Ubuntu (see bootstrap.sh of Dokku)
+    # Use trusty for all Ubuntu (see bootstrap.sh of Dokku)
+  when: ansible_distribution == 'Ubuntu'
+- name: "Add apt repository of dokku"
+  apt_repository:
+    repo: "deb https://packagecloud.io/dokku/dokku/debian/ stretch main"
+    # Use stretch for all Debian (see bootstrap.sh of Dokku)
+  when: ansible_distribution == 'Debian'
 
 - name: "debconf dokku/vhost_enable"
   debconf:
