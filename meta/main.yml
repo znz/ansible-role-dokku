@@ -12,7 +12,7 @@ galaxy_info:
   - name: Debian
     versions:
     - jessie
-    #- stretch
+    - stretch
 
   galaxy_tags:
   - networking
