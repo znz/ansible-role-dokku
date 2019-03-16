@@ -53,6 +53,7 @@
     name: "dokku{{ dokku_version }}"
     install_recommends: yes
     update_cache: yes
+    cache_valid_time: 3600
 
 - name: "Install plugin"
   command: >-
