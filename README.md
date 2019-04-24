@@ -2,6 +2,8 @@
 
 Setup [Dokku](http://dokku.viewdocs.io/dokku/).
 
+If you want to all-in-one Dokku role, see [Dokku official ansible role](https://github.com/dokku/ansible-dokku).
+
 ## Requirements
 
 - Debian
