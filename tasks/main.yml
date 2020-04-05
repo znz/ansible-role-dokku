@@ -12,16 +12,23 @@
     url: "https://packagecloud.io/dokku/dokku/gpgkey"
     id: "FB2B6AA421CD193F"
 
-- name: "Add apt repository of dokku"
+- name: "Remove old apt repository of dokku"
   apt_repository:
     repo: "deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main"
     # Use trusty for all Ubuntu (see bootstrap.sh of Dokku)
-  when: ansible_distribution == 'Ubuntu'
-- name: "Add apt repository of dokku"
+    state: absent
+  #when: ansible_distribution == 'Ubuntu'
+- name: "Remove old apt repository of dokku"
   apt_repository:
     repo: "deb https://packagecloud.io/dokku/dokku/debian/ stretch main"
     # Use stretch for all Debian (see bootstrap.sh of Dokku)
-  when: ansible_distribution == 'Debian'
+    state: absent
+  #when: ansible_distribution == 'Debian'
+
+- name: "Add apt repository of dokku"
+  apt_repository:
+    filename: dokku
+    repo: 'deb https://packagecloud.io/dokku/dokku/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main'  # yamllint disable-line rule:line-length
 
 - name: "debconf dokku/vhost_enable"
   debconf:
