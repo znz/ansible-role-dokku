@@ -1,0 +1,10 @@
+[Unit]
+Description=Dokku letsencrypt:auto-renew
+
+[Timer]
+OnCalendar={{ dokku_letsencrypt_auto_renew_on }}
+Persistent=true
+RandomizedDelaySec=3600
+
+[Install]
+WantedBy=timers.target

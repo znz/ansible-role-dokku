@@ -23,6 +23,10 @@ If use `true` (`yes`), `false` (`no`) or something similar, ansible reports `cha
 
 - `dokku_plugin`: Install plugin.
 
+If you use [dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) and want to use systemd units instead of cron-job.
+
+- `dokku_letsencrypt_auto_renew_on`: `OnCalendar` of timer unit.
+
 ## Dependencies
 
 - docker
@@ -57,6 +61,7 @@ Another example:
           url: https://github.com/dokku/dokku-maintenance.git
         - name: postgres
           url: https://github.com/dokku/dokku-postgres.git
+        dokku_letsencrypt_auto_renew_on: "*-*-* 3,9,15,21:00"
 
 ## License
 

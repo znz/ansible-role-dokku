@@ -10,3 +10,7 @@ dokku_version: ""
 dokku_plugin: []
 
 dokku_nginx_client_max_body_size: "20M"
+
+# example:
+#  dokku_letsencrypt_auto_renew_on: "*-*-* 3,9,15,21:00"
+dokku_letsencrypt_auto_renew_on: ""

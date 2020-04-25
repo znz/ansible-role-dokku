@@ -1,0 +1,7 @@
+[Unit]
+Description=Dokku letsencrypt:auto-renew
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dokku letsencrypt:auto-renew
+User=dokku

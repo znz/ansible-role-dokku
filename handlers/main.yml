@@ -1,0 +1,7 @@
+---
+- name: "Enable dokku-letsencrypt-auto-renew.timer"
+  systemd:
+    name: "dokku-letsencrypt-auto-renew.timer"
+    state: started
+    daemon_reload: yes
+    enabled: yes

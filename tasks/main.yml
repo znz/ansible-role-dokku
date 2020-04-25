@@ -81,3 +81,16 @@
     owner: root
     group: root
     mode: 0444
+
+- name: "Install dokku-letsencrypt-auto-renew"
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    owner: root
+    group: root
+    mode: 0444
+  with_items:
+  - "dokku-letsencrypt-auto-renew.service"
+  - "dokku-letsencrypt-auto-renew.timer"
+  when: "dokku_letsencrypt_auto_renew_on != ''"
+  notify: "Enable dokku-letsencrypt-auto-renew.timer"
